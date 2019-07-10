@@ -1,0 +1,49 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+<!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+        <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">User List</h4>
+                  <small> <a href="{{ path('admin_user_new') }}" class="btn btn-primary btn-fw"> Add User </a> </small>
+                  
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Id</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Status</th>
+                          <th>Roles</th>
+                          <th>Edit</th>
+                          <th>Delete</th>
+                        </tr>
+                      </thead>
+                      {% for user in users %}
+                      <tbody>
+                        <tr>
+                          <td>{{user.id}}</td>
+                          <td>{{user.name}}</td>
+                          <td>{{user.email}}</td>
+                          <td>{{user.status}}</td>
+                          <td>{% for item in user.roles %}
+                                    {{ item }}
+                                    {% endfor %}</td>
+                          <td><a href="{{path('admin_user_edit',{'id':user.id})}}" class="btn btn-primary btn-fw"> Edit  </a></td>
+                          <td><a href="{{path('admin_user_delete',{'id':user.id})}}" onclick="return confirm('This user will be deleted !');" class="btn btn-danger btn-fw">Delete  </a></td>
+                        </tr> 
+                      </tbody>
+                      {% endfor %}
+                    </table>
+                  </div>
+                </div>
+              </div>
+        </div>
+        
+        <!-- content-wrapper ends -->
+{% endblock %}

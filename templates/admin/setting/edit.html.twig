@@ -1,0 +1,25 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+<!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+        <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Settings</h4>
+                
+                  <div class="table-responsive">
+                  {{ include('admin/messages.html.twig') }}
+
+    {{ include('admin/setting/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+</div>
+                </div>
+              </div>
+        </div>
+        
+        <!-- content-wrapper ends -->
+{% endblock %}

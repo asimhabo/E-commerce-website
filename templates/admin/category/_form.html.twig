@@ -1,0 +1,41 @@
+<form class="forms-sample" method="post">
+                        <div class="form-group">
+                          <label >Parent ID </label>
+                           <select name="category[parentid]" class="form-control">
+                              {% if category.parentid!=0 %}
+                              <option value="{{ category.parentid }}">{{ catname.title }}</option>
+                              {% else %}
+                              <option value="0">Main Category</option>
+                              {% endif %}
+
+                              {% for cat in catlist %}
+                              <option value="{{ cat.id }}">{{ cat.title }}</option>
+                              {% endfor %}
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Title</label>
+                          <input type="text" name="category[title]" value="{{category.title}}" class="form-control"  placeholder="title">
+                        </div>
+                        <div class="form-group">
+                          <label >Keywords</label>
+                          <input type="text" name="category[keywords]" value="{{category.keywords}}" class="form-control" placeholder="keywords">
+                        </div>
+                        <div class="form-group">
+                          <label >Description</label>
+                          <input type="text" name="category[description]" value="{{category.description}}" class="form-control" placeholder="description">
+                        </div>
+                        <div class="form-group">
+                          <label >Status</label>
+                          <select name="category[status]" class="form-control">
+                              <option>{{category.status}}</option>
+                              <option>true</option>
+                              <option>false</option>
+                          </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success mr-2">Submit</button>
+                         <a  <button href="{{ path('admin_category_index') }}" class="btn btn-light">Cancel</button> </a>
+                      </form>
+
+  

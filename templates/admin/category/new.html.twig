@@ -1,0 +1,23 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+<!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+        <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Creat new Category</h4>
+                  
+                  
+                  <div class="table-responsive">
+    {{ include('admin/category/_form.html.twig') }}
+
+</div>
+                </div>
+              </div>
+        </div>
+        
+        <!-- content-wrapper ends -->
+{% endblock %}

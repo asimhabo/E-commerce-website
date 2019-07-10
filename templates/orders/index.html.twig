@@ -1,0 +1,46 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Orders index{% endblock %}
+{% block sidebar %} {{ include ('home/usersidebar.html.twig') }}{% endblock %}
+{% block content %}
+
+    <h2 class="title text-center"> Order List </h2>
+{{ include('admin/messages.html.twig') }}
+ <div class="container">
+<div class="col-md-9">
+        <table class="table table-condensed">
+        <thead>
+            <tr>
+                 <th>Name</th>
+                <th>Amount</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                
+                <td>{{ order.name }}</td>
+                <td>{{ order.amount }}</td>  
+                <td>{{ order.address }}</td>
+                <td>{{ order.city }}</td>
+                <td>{{ order.phone }}</td>
+                <td>{{ order.status }}</td>
+                <td>
+                    <a href="{{ path('orders_show', {'id': order.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    </div>
+{% endblock %}

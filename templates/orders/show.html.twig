@@ -1,0 +1,56 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Orders{% endblock %}
+{% block sidebar %} {{ include ('home/usersidebar.html.twig') }}{% endblock %}
+{% block content %}
+ <h2 class="title text-center"> Order Details </h2>
+ <div class="container">
+ <div class="col-md-9">
+        <table class="table table-condensed">
+			<thead>
+				<tr class="cart_menu">
+                    <th>Id</th>
+                    <th>Product Name </th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+                {% set total=0 %}
+                {% for rs in orderdetail %}
+                    <tr>
+                        <td>{{rs.id}}</td>
+                        <td>{{rs.name}}</td>
+                        <td>{{rs.price}}</td>
+                        <td>{{rs.quantity}}</td>
+                        <td>{{rs.amount}}</td>
+                        <td>{{rs.status}}</td>
+                     
+                    </tr>
+                {% endfor %}
+			</tbody>
+		</table>
+        <h3> Order Information : </h3>
+        <h4>Id :</h4> {{order.id}}
+        <hr>
+        <h4>User Id :</h4> {{order.userid}}
+        <hr>
+        <h4>Amount :</h4> {{order.amount}}
+        <hr>
+        <h4>Name : </h4>{{order.name}}
+        <hr>
+        <h4>Address :</h4> {{order.address}}
+        <hr>
+        <h4>City  :</h4> {{order.city}}
+        <hr>
+        <h4>Phone :</h4> {{order.phone}}
+        <hr>
+        <h4>ShipInfo : </h4>{{order.shipinfo}}
+        <hr>
+        <h4>Status :</h4> {{order.status}}
+        <hr>
+</div>
+    </div>
+{% endblock %}

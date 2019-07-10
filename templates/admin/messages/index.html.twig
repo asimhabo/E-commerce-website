@@ -1,0 +1,56 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+<!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+        <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Messages List</h4>
+                  
+                  <div class="table-responsive">
+                    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Messagedate</th>
+                <th>Status</th>
+                <th>Delete</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message in messages %}
+            <tr>
+                <td>{{ message.id }}</td>
+                <td>{{ message.name }}</td>
+                <td>{{ message.email }}</td>
+                <td>{{ message.subject }}</td>
+                <td>{{ message.message }}</td>
+                <td>{{ message.messagedate }}</td>
+                <td>{{ message.status }}</td>
+                <td>
+                    <a href="{{ path('admin_messages_show', {'id': message.id}) }}" class="btn btn-primary btn-fw">show</a> </td>
+                  <td>  <a href="{{ path('admin_messages_delete', {'id': message.id}) }}" class="btn btn-danger btn-fw">delete</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+      </div>
+                </div>
+              </div>
+        </div>
+        
+        <!-- content-wrapper ends -->
+{% endblock %}

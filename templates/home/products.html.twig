@@ -1,0 +1,57 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} {{ data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+{% block sidebar %} {{ include ('home/sidebar.html.twig') }} {% endblock %}
+
+
+
+{% block content %}
+<div id="contact-page" class="container">
+    <div class="bg">
+    	<div class="row">  	
+			<div class="col-sm-9 padding-right">
+					<div class="features_items"><!--features_items-->
+						<h2 class="title text-center">{{ data[0].title }}</h2>
+						{% for rs in products %}
+						<div class="col-sm-4">
+					
+							<div class="product-image-wrapper">
+								<div class="single-products">
+										<div class="productinfo text-center">
+											<img src="/uploads/images/{{rs.image}}" alt="" />
+											<h2>{{ rs.sprice }}</h2>
+											<p>{{ rs.title }}</p>
+											<a href="{{path('product_detail',{'id':rs.id})}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+										<div class="product-overlay">
+											<div class="overlay-content">
+												<h2>{{ rs.sprice }}</h2>
+												<p>{{ rs.title }}</p>
+												<a href="{{path('product_detail',{'id':rs.id})}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+										</div>
+								</div>
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a href="{{path('product_detail',{'id':rs.id})}}"><i class="fa fa-plus-square"></i>Get It Now</a></li>
+										
+									</ul>
+								</div>
+							</div>
+						</div>
+                    {% endfor %}
+
+
+
+						
+						
+						
+					</div><!--features_items-->
+					
+	    </div>	
+    </div>	
+</div><!--/#contact-page-->
+
+{% endblock %}

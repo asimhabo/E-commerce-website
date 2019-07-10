@@ -1,0 +1,101 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} {{ data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+{% block sidebar %} {{ include ('home/sidebar.html.twig') }} {% endblock %}
+
+{% block content %}
+<div class="product-details"><!--product-details-->
+						<div class="col-sm-4">
+						<div id="myCarousel" class="carousel slide cntr">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <a href="" title="{{ data[0].title }}">
+                    <img src="{{ asset('uploads') }}/images/{{ data[0].image }}" style="..." alt="">
+                    </a>
+                </div>
+                {% for rs in images %}   
+                <div class="item">
+                <a href=""> <img style="..." src="{{ asset('uploads') }}/images/{{ rs.image }}" alt=""></a>
+                </div>
+                {% endfor %}    
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev"></a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next"></a>
+        </div>
+   
+
+						</div>
+						<form name="shopcart" class="form-horizontal" action="/shopcart/new" method="post">
+						<div class="col-sm-7">
+							<div class="product-information"><!--/product-information-->
+								<h2>{{data[0].title}}</h2>
+								<p>{{data[0].description}}</p>
+								<span>
+									<span>US ${{data[0].sprice}}</span>
+									<label>Quantity:</label>
+									<input type="number" name="shopcart[quantity]" class="span6" value="1" placeholder="Count" max="{{ data[0].amount }}">
+									<input type="hidden" name="shopcart[productid]" value="{{ data[0].id }}">
+									<input type="hidden" name="token" value="{{ csrf_token('add_item') }}">
+
+										<button type="submit" class="shopBtn"> <span class="icon-shopping-cart"></span> Add to cart </button>
+									
+								</span>
+								<p><b>In Stock:</b>{{data[0].amount}}</p>
+							</div><!--/product-information-->
+						</div>
+						</form>
+					</div><!--/product-details-->
+					<h3> Details : </h3>
+					{{data[0].detail|raw}}
+					
+							
+						<hr>
+						<h4> Comments : </h3>		    
+                  <div class="table-responsive">
+                    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Comment</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+            <tr>
+                
+                <td>{{ comment.u_name }}</td>
+                <td>{{ comment.comdate }}</td>
+                <td>{{ comment.comment }}</td>
+               
+                <td>
+								{% if is_granted('ROLE_USER') %}
+								{% if app.user.id == comment.userid or is_granted('ROLE_ADMIN') %}
+                   <a href="/comment/delete/{{data[0].id}}/{{comment.id}}">Delete</a> 
+									 {% endif %}
+									 {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+               
+							<form action="/comment/add/{{data[0].id}}" >
+							
+										<textarea name="comment"></textarea>
+									
+										<button type="submit" class="btn btn-default pull-right">
+											Submit
+										</button>
+									</form>
+							</div>
+						</div>
+					</div><!--/category-tab-->
+{% endblock %}

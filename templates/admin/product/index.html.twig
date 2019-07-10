@@ -1,0 +1,73 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+<!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+        <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Product List</h4>
+                  <small> <a href="{{ path('admin_product_new') }}" class="btn btn-primary btn-fw"> Add Product </a> </small>
+                  
+                  <div class="table-responsive">
+                    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Amount</th>
+                <th>Pprice</th>
+                <th>Sprice</th>
+                <th>Image</th>
+                <th>Gallery</th>
+                <th>Category_id</th>
+                <th>Status</th>
+               <th>Show</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.amount }}</td>
+                <td>{{ product.pprice }}</td>
+                <td>{{ product.sprice }}</td>
+                <td><a href="javascript:openWin('{{ path('admin_product_iedit', {'id': product.id})}}','','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=400, height=400');">
+                {% if product.image==null %}
+                    <img src="{{ url('admin') }}/img/image.png" >
+                    {% else %}
+                       <img src="{{ asset('uploads') }}/images/{{ product.image }}">
+                {% endif %}
+                </a>
+                </td>
+                <td><a href="javascript:openWin('{{ path('admin_image_new', {'pid': product.id})}}','','toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=1000, height=800');">
+                 <img src="{{ url('admin') }}/img/gallery.png" height="32"></td>
+                 </a>
+                <td>{{ product.categoryId }}</td>
+                <td>{{ product.status }}</td>
+                <td>
+                    <a href="{{ path('admin_product_show', {'id': product.id}) }}" class="btn btn-primary btn-fw">show</a>
+                </td> <td> <a href="{{ path('admin_product_edit', {'id': product.id }) }}" class="btn btn-primary btn-fw">edit</a>
+                </td>
+                <td> {{ include ('admin/product/_delete_form.html.twig')}}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="19">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+                  </div>
+                </div>
+              </div>
+        </div>
+        
+        <!-- content-wrapper ends -->
+{% endblock %}

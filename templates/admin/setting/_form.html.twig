@@ -1,0 +1,120 @@
+<form class="forms-sample" method="post">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">General Info</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="emailserver-tab" data-toggle="tab" href="#emailserver" role="tab" aria-controls="emailserver" aria-selected="false">Email Server</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="aboutus-tab" data-toggle="tab" href="#aboutus" role="tab" aria-controls="about us" aria-selected="false">About us</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact us" aria-selected="false">Contact us</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="referances-tab" data-toggle="tab" href="#referances" role="tab" aria-controls="referances" aria-selected="false">Referances</a>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+   <div class="form-group">
+   <br>
+                          <label>Title</label>
+                          <input type="text" name="setting[title]" value="{{setting.title}}" class="form-control"  placeholder="title">
+                        </div>
+                        <div class="form-group">
+                          <label >Keywords</label>
+                          <input type="text" name="setting[keywords]" value="{{setting.keywords}}" class="form-control" placeholder="keywords">
+                        </div>
+                        <div class="form-group">
+                          <label >Description</label>
+                          <input type="text" name="setting[description]" value="{{setting.description}}" class="form-control" placeholder="description">
+                        </div>
+                        <div class="form-group">
+                          <label >Company Name</label>
+                          <input type="text" name="setting[company]" value="{{setting.company}}" class="form-control" placeholder="company name">
+                        </div>
+                        <div class="form-group">
+                          <label >Address</label>
+                          <input type="text" name="setting[address]" value="{{setting.address}}" class="form-control" placeholder="address">
+                        </div>
+                          <div class="form-group">
+                          <label >Fax</label>
+                          <input type="text" name="setting[fax]" value="{{setting.fax}}" class="form-control" placeholder="fax">
+                        </div>
+  
+  </div>
+  <div class="tab-pane fade" id="emailserver" role="tabpanel" aria-labelledby="emailserver-tab">
+                       <div class="form-group">
+                       <br>
+                          <label >Email Server</label>
+                          <input type="text" name="setting[smtpserver]" value="{{setting.smtpserver}}" class="form-control" placeholder="SMTP Server">
+                        </div>
+                        <div class="form-group">
+                          <label >Email</label>
+                          <input type="text" name="setting[smtpemail]" value="{{setting.smtpemail}}" class="form-control" placeholder="SMTP Email">
+                        </div>
+                        <div class="form-group">
+                          <label >Password</label>
+                          <input type="text" name="setting[smtppassword]" value="{{setting.smtppassword}}" class="form-control" placeholder="SMTP Password">
+                        </div>
+                        <div class="form-group">
+                          <label >SMTP Port</label>
+                          <input type="text" name="setting[smtpport]" value="{{setting.smtpport}}" class="form-control" placeholder="SMTP Port">
+                        </div>
+  
+  
+  </div>
+  <div class="tab-pane fade" id="aboutus" role="tabpanel" aria-labelledby="aboutus-tab">
+                       <div class="form-group">
+                       <br>
+                          <label >About Us</label>
+                        <textarea name="setting[aboutus]" id="editor2">{{setting.aboutus}}</textarea>
+                        </div>
+  </div> 
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="form-group">
+                        <br>
+          
+                          <textarea name="setting[contact]" id="editor1">{{setting.contact}}</textarea>
+                        </div>
+
+  </div>
+  <div class="tab-pane fade" id="referances" role="tabpanel" aria-labelledby="referances-tab">
+                       <div class="form-group">
+                       <br>
+                          <textarea name="setting[referances]" id="editor">{{ setting.referances }}</textarea>
+                        </div>
+  </div>
+</div>
+
+                       
+                    
+                        
+                        <button type="submit" class="btn btn-success mr-2">Submit</button>
+                         <a  <button href="{{ path('admin_setting_index') }}" class="btn btn-light">Cancel</button> </a>
+                      </form>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor1' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor2' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

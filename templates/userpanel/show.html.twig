@@ -1,0 +1,68 @@
+{% extends 'frontbase.html.twig' %}
+{% block sidebar %}{{ include ('home/usersidebar.html.twig') }}{% endblock %}
+{% block content %}
+<div class="container">
+{% if msg!="" %}
+	<div class="alert alert-success" role="alert">
+		{{msg}}
+	</div>
+{% endif %}
+	<div class="row">
+		<div class="col-md-9">
+		    <div class="card">
+		        <div class="card-body">
+		            <div class="row">
+		                <div class="col-md-12">
+		                    <h4>My Profile</h4>
+		                    <hr>
+		                </div>
+		            </div>
+		            <div class="row">
+		                <div class="col-md-12">
+		                    <form method="post">
+                              <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">Name*</label> 
+                                <div class="col-8">
+                                  <input id="name" name="name" value="{{app.user.name}}" placeholder="Name" class="form-control here" required="required" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="email" class="col-4 col-form-label">Email*</label> 
+                                <div class="col-8">
+                                  <input id="email" name="email" value="{{app.user.email}}" placeholder="Email" class="form-control here" required="required" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="newpass" class="col-4 col-form-label">New Password</label> 
+                                <div class="col-8">
+                                  <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="address" class="col-4 col-form-label">Address</label> 
+                                <div class="col-8">
+                                  <input id="address" value="{{app.user.address}}" name="address" placeholder="Address" class="form-control here" type="text">
+                                </div>
+                              </div> 
+                              <div class="form-group row">
+                                <label for="tel" class="col-4 col-form-label">Phone</label> 
+                                <div class="col-8">
+                                  <input id="phone" name="phone" value="{{app.user.phone}}" placeholder="Telefon" class="form-control here" type="text">
+                                </div>
+                              </div> 
+                              <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                  <input type="hidden" name="token" value="{{ csrf_token('account') }}">
+                                  <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                </div>
+                              </div>
+                            </form>
+		                </div>
+		            </div>
+		            
+		        </div>
+		    </div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+<!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+        <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Orders List</h4>
+                  <small> <a href="{{ path('admin_product_new') }}" class="btn btn-primary btn-fw"> Add Order </a> </small>
+                  
+                  <div class="table-responsive">
+                    <table class="table">
+        <thead>
+            <tr>
+                 <th>Name</th>
+                <th>Amount</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Phone</th>
+                <th>Note</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                
+                <td>{{ order.name }}</td>
+                <td>{{ order.amount }}</td>
+                <td>{{ order.address }}</td>
+                <td>{{ order.city }}</td>
+                <td>{{ order.phone }}</td>
+                <td>{{ order.note }}
+                <td>{{ order.status }}</td>
+                <td>
+                   <a href="{{ path('admin_orders_show', {'id': order.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+               </div>
+                </div>
+              </div>
+        </div>
+        
+        <!-- content-wrapper ends -->
+{% endblock %}

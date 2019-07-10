@@ -1,0 +1,23 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} About Us {{ data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+
+
+
+{% block content %}
+<div id="contact-page" class="container">
+    <div class="bg">
+	    	<div class="row">    		
+	    		<div class="col-sm-12">    			   			
+					<h2 class="title text-center">About Us</h2>    			    				    				
+				</div>			 		
+			</div>    	
+    	<div class="row">  	
+			{{data[0].aboutus|raw}}
+	    </div>	
+    </div>	
+</div><!--/#contact-page-->
+
+{% endblock %}

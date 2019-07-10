@@ -1,0 +1,58 @@
+{{ include('admin/messages.html.twig') }}
+ <div class="container">
+<div class="col-sm-4">
+<form name="order" class="form-horizontal" action="/orders/new" method="post">
+   <fieldset>
+   <h5> TOTAL PRICE  : </h5>
+    <div class="control-group" col-sm-5>
+        <input type="text" name="orders[amount]" value="{{ total }}" placeholder"name" class="input-xlarge"/>
+    </div>
+    <hr>
+    The buyer info
+    <hr>
+     Name Surname :
+    <div class="control-group" col-sm-5>
+        <input type="text" name="orders[name]" value="{{ app.user.name }}" placeholder"name" class="input-xlarge"/>
+    <br>
+     Address : 
+    <div class="control-group" col-sm-5>
+        <input type="text" name="orders[address]" value="{{ app.user.address }}" placeholder"address" class="input-xlarge"/>
+    </div>
+     City 
+    <div class="control-group" col-sm-5>
+        <input type="text" name="orders[city]" value="{{ app.user.city }}" placeholder"city" class="input-xlarge"/>
+    </div>
+     Phone Number : 
+    <div class="control-group" col-sm-5>
+        <input type="text" name="orders[phone]" value="{{ app.user.phone }}" placeholder"name" class="input-xlarge"/>
+    </div>
+    <hr>
+    Credit Card Information
+    <hr>
+     Name Surname : 
+    <div class="control-group" col-sm-5>
+        <input type="text" name="cardholdername"  placeholder"Card Name Surname" class="input-xlarge"/>
+    </div>
+     Card Number : 
+    <div class="control-group" col-sm-5>
+        <input type="text" name="cardnumber"  placeholder"Card Number" class="input-xlarge"/>
+    </div>
+     Valid Until
+    <div class="control-group" col-sm-5>
+        <input type="text" name="cardvaliddate"  placeholder"month/year" class="input-xlarge"/>
+    </div>
+     Security Code : 
+    <div class="control-group" col-sm-5>
+        <input type="number" name="cardsecuritycode"  placeholder"Security Code" class="input-xlarge"/>
+    </div>
+
+    <input type="hidden" name="token" value="{{ csrf_token('form-order') }}" />
+      
+    <div class="control-group" col-sm-5>
+    <input  class="shopBin" type="submit" value="BUY NOW" />
+    </div>
+
+    </fieldset>
+    </form>
+    </div>
+    </div>
